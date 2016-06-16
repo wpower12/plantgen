@@ -16,12 +16,11 @@ function PlantMaker(){
 PlantMaker.prototype = {
   makePlant: function(){
       var plant = new Plant();
-      plant.root = new PNBranch([0,0,0]);
+      plant.root = new PNBranch();
       this.addElements( plant.root, MAX_DEPTH );
       return plant;
   },
   addElements: function( current_node, depth ){
-    console.log("adding elements to: ", current_node);
     switch( current_node.type ){
       case "n":
         this.addE_Edges( current_node, depth );
@@ -37,9 +36,7 @@ PlantMaker.prototype = {
       var r = Helper.randomInt(MIN_EDGES, MAX_EDGES);
       current_node.size = r;
       for( var c = 0; c < r; c++ ){
-        current_node.children[c] = this.randomEdge( current_node.loc );
-        // var ch = current_node.children[c];
-        // console.log("addEdge(s : e): ", ch.location_start, ch.location_end);
+        current_node.children[c] = this.randomEdge( );
       }
       for( var c = 0; c < current_node.size; c++ ){
         this.addElements(current_node.children[c], depth-1);
@@ -48,16 +45,26 @@ PlantMaker.prototype = {
   },
   addE_Node: function( current_node, depth ){
     if( depth > 0 ){
-      current_node.children[0] = new PNBranch( current_node.location_end );
+      current_node.children[0] = new PNBranch( );
       this.addElements(current_node.children[0], depth-1);
     }
   },
-  randomEdge: function( start_loc ){
-    var length = Helper.randomInt(50, 100);
-    var direction = [Helper.randomInt(1, 179),    // Theta
-                     Helper.randomInt(1, 360)];   // Phi
-    var ret = new PELine( start_loc, length, direction );
+  randomEdge: function( ){
+    var ret = new PELine( );
+    // Set parameters
+    ret.prm = {
+      delta_theta: Helper.randomInt(5, 120),
+      delta_phi:   Helper.randomInt(5, 250),
+      delta_len:   Helper.randomInt(5, 100),
+      delta_rad:   Helper.randomInt(5, 10)
+    };
     return ret;
+  },
+  randomNode: function() {
+    var ret = new PNBranch();
+    ret.prm = {
+      rad_delta: Helper.randomInt(5, 10)
+    }
   }
 }
 
