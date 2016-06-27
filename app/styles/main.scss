@@ -3,24 +3,36 @@
 
 body {
   background: #fafafa;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: monospace;
   color: #333;
 }
 
 .hero-unit {
-  margin: 50px auto 0 auto;
-  width: 600px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
+  margin: 10px auto 10px auto;
+  width: 800px;
   background-color: #eee;
   border-radius: 6px;
-  padding: 20px;
+  padding: 10px;
 }
 
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+.chart {
+  height: 400px;
+  width: 810px;
+  margin: 10px;
+  margin: 10px auto;
+  border: 3px solid #eee;
+  border-radius: 6px;
+}
+
+.node {
+  font-size: medium;
+  text-align: center;
+  color: #333;
+  padding: 0 5px;
+  border: 2px solid #eee;
+  border-radius: 3px;
+}
+
+.center {
+  text-align: center;
 }

@@ -15,17 +15,19 @@
     <!-- endbuild -->
 
     <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/Treant.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 
   </head>
   <body>
-    <!--[if lt IE 10]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
     <div class="hero-unit">
       <canvas id='screen' height=400/>
+    </div>
+    <div class="chart" id="graph"></div>
+    <div class="hero-unit center">
+      [space] for a new individual
+      [reload] for new procedure
     </div>
 
 
@@ -33,6 +35,8 @@
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/three.min/index.js"></script>
+    <script src="/bower_components/raphael/raphael.min.js"></script>
+    <script src="/bower_components/treant-js/Treant.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
