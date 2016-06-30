@@ -34,9 +34,6 @@ PELine.prototype = {
     ctx.len   = Helper.randomIntAC( ctx.len,
                                     this.prm.delta_len,
                                     20, 80 );
-    ctx.rad   = Helper.randomIntAC( ctx.rad,
-                                    this.prm.delta_phi,
-                                    5, 15 );
     ctx.loc_end = calcEndLoc( ctx.loc_start,
                               ctx.len ,
                              [ctx.theta, ctx.phi]);
@@ -44,6 +41,9 @@ PELine.prototype = {
                                     ctx.loc_end,
                                     ctx.rad,
                                     m );
+    ctx.rad   = Helper.randomIntAC( ctx.rad,
+                                    this.prm.delta_phi,
+                                    5, 15 );
     var c_mesh = this.children[0].parse( ctx, m );
     var ret_geo = new THREE.Geometry();
     cyl_mesh.updateMatrix();

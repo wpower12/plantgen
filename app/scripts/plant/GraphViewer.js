@@ -16,14 +16,11 @@ GraphViewer.prototype = {
     this.chart_config = [
       config, root_node
     ];
-    if( plant.root.children.length > 0 ){
-      this.addNode( root_node, plant.root.children[0] );
+ 
+    for( var i = 0; i < plant.root.children.length > 0; i++ ){
+      this.addNode( root_node, plant.root.children[i] );
     }
-
-    console.log(this.chart_config);
-
     this.t = new Treant( this.chart_config );
-    // new Treant( this.chart_config );
   },
   clearGraph: function(){
     // this.t.destroy();
@@ -38,7 +35,6 @@ GraphViewer.prototype = {
       }
     };
     this.chart_config.push( node );
-    console.log(child_proc_node);
     for( var i = 0; i < child_proc_node.children.length; i++ ){
       this.addNode( node, child_proc_node.children[i] );
     }

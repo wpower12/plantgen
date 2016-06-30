@@ -3,8 +3,8 @@ var TestMaker   = require('./plant/TestMaker');
 var PlantViewer = require('./plant/PlantViewer');
 var GraphViewer = require('./plant/GraphViewer');
 
-// var maker  = new PlantMaker();
-var maker = new TestMaker();
+var maker  = new PlantMaker();
+// var maker = new TestMaker();
 
 var viewer = new PlantViewer( document.getElementById('screen') );
 var graph  = new GraphViewer( );
@@ -14,10 +14,10 @@ var plantProcedure = maker.makePlant();
 var ctx = {
   loc_start: [0,0,0],
   loc_end:   [0,0,0],
-  theta: 45,
-  phi: 90,
-  len: 10,
-  rad: 1,
+  theta: 90,
+  phi: 0,
+  len: 60,
+  rad: 20,
   axis: new THREE.Vector3(0,1,0),
   count: 3
 };
@@ -36,6 +36,7 @@ function checkKey( e ){
   if (e.keyCode == '32'){
     console.log('new individual.');
     viewer.clearScene();
+    plantProcedure.setStartCtx( ctx );
     viewer.show( plantProcedure );
   } else if ( e.keyCode == '82' ){
     console.log('new procedure.');

@@ -8,7 +8,7 @@ var PNTerminal  = require('./elements/PNTerminal');
 var PMath = require('./PMath');
 var Helper = new PMath();
 
-var MAX_DEPTH = 5;
+var MAX_DEPTH = 7;
 var MIN_EDGES = 1;
 var MAX_EDGES = 5;
 function PlantMaker(){
@@ -74,38 +74,36 @@ PlantMaker.prototype = {
     var ret = new PELine( );
     // Set parameters
     ret.prm = {
-      delta_theta: Helper.randomInt(5, 120),
-      delta_phi:   Helper.randomInt(5, 250),
-      delta_len:   Helper.randomInt(5, 100),
-      delta_rad:   Helper.randomInt(5, 10)
+      delta_theta: Helper.randomInt(0, 120),
+      delta_phi:   Helper.randomInt(0, 250),
+      delta_len:   Helper.randomInt(0, 50)
     };
     return ret;
   },
   randomNode: function() {
     // PNBranch or BNSymmertirc or PNTerminal
     var ret;
-    switch( Helper.randomInt(0,5) ){
-      case 0:
+    switch( Helper.randomInt(0,7) ){
+      case 0,1:
         ret = new PNSymmetric();
         ret.prm = {
-          rad_delta: Helper.randomInt(2, 5),
+          rad_delta: Helper.randomInt(0, 5),
           dx: Helper.randomFloat( 0, 1 ),
           dy: Helper.randomFloat( 0, 1 ),
           dz: Helper.randomFloat( 0, 1 ),
-          count_delta: Helper.randomInt(0, 3)
+          count_delta: Helper.randomInt(0, 4)
         }
         break;
-      case 1:
+      case 2,3:
         ret = new PNTerminal();
         ret.prm = {
-          rad_delta: Helper.randomInt(2, 5)
+          rad_delta: Helper.randomInt(0, 5)
         }
         break;
       default:
         var ret = new PNBranch();
         ret.prm = {
-          count_delta: Helper.randomInt(0, 4),
-          rad_delta: Helper.randomInt(2, 15)
+          rad_delta: Helper.randomInt(0, 10)
         }
     }
     return ret;

@@ -16,8 +16,30 @@ function TestMaker(){
 };
 TestMaker.prototype = {
   makePlant: function(){
-    // return this.makeComplex();
-    return this.makeTestSimpleBranch();
+    return this.makeComplex();
+    // return this.makeSimpleSym();
+    // return this.makeTestSimpleBranch();
+  },
+  makeSimpleSym: function(){
+    var plant = new Plant();
+    var nodePrm = {
+      rad_delta: Helper.randomInt(0, 0),
+      count_delta: Helper.randomInt(0, 3)
+    }
+
+    var NA = new PNSymmetric();
+    NA.prm = nodePrm;  
+    var EA = this.zeroEdge();
+    var NB = new PNTerminal();
+
+    EA.children[0] = NB;
+    EA.size = 1;
+
+    NA.children[0] = EA;
+    NA.size = 1;
+
+    plant.root = NA;
+    return plant;
   },
   makeTestSimpleBranch(){
     var plant = new Plant();
@@ -86,6 +108,18 @@ TestMaker.prototype = {
       delta_rad:   Helper.randomInt(5, 10)
     };
     return ret;
+  },
+  zeroEdge: function(){
+    var ret = new PELine( );
+    // Set parameters
+    ret.prm = {
+      delta_theta: Helper.randomInt(0, 1),
+      delta_phi:   Helper.randomInt(0, 1),
+      delta_len:   Helper.randomInt(0, 1),
+      delta_rad:   Helper.randomInt(0, 1)
+    };
+    return ret;
+    
   }
 }
 
